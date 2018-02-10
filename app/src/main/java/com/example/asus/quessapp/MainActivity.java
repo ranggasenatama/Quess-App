@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -17,6 +18,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.concurrent.ExecutionException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -37,7 +39,56 @@ public class MainActivity extends AppCompatActivity {
     Button button3;
 
     public void checkAnswer(View view){
-        
+        if(view.getTag().toString().equals(Integer.toString(locationAnswer))){
+            Toast.makeText(this, "Correct", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "Incorrect", Toast.LENGTH_SHORT).show();
+        }
+        newQuestion();
+    }
+
+    public void newQuestion(){
+        Random random = new Random();
+        selectedCelebrity = random.nextInt(listNameArtis.size());
+
+        DownloadImage downloadImage = new DownloadImage();
+
+        Bitmap bitmap = null;
+
+        try {
+            bitmap = downloadImage.execute(listImage.get(selectedCelebrity)).get();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        imageView.setImageBitmap(bitmap);
+
+        locationAnswer = random.nextInt(4);
+
+        int j=0;
+        for(int i=0;i<4;i++){
+            if(locationAnswer==i) {
+                answer[i]=listNameArtis.get(selectedCelebrity);
+            }else {
+                while(j == selectedCelebrity){
+                    j=random.nextInt(listNameArtis.size());
+                }
+                answer[i]=listNameArtis.get(random.nextInt(listNameArtis.size()));
+            }
+
+        }
+
+        for(int i=0;i<4;i++){
+            if(i==0){
+                button0.setText(answer[i]);
+            } else if(i==1){
+                button1.setText(answer[i]);
+            } else if(i==2){
+                button2.setText(answer[i]);
+            } else {
+                button3.setText(answer[i]);
+            }
+        }
     }
 
     @Override
@@ -72,41 +123,7 @@ public class MainActivity extends AppCompatActivity {
                 listNameArtis.add(matcher.group(1));
             }
 
-            Random random = new Random();
-            selectedCelebrity = random.nextInt(listNameArtis.size());
-
-            DownloadImage downloadImage = new DownloadImage();
-
-            Bitmap bitmap = downloadImage.execute(listImage.get(selectedCelebrity)).get();
-
-            imageView.setImageBitmap(bitmap);
-
-            locationAnswer = random.nextInt(4);
-
-            int j=0;
-            for(int i=0;i<4;i++){
-                if(locationAnswer==i) {
-                    answer[i]=listNameArtis.get(selectedCelebrity);
-                }else {
-                    while(j == selectedCelebrity){
-                        j=random.nextInt(listNameArtis.size());
-                    }
-                    answer[i]=listNameArtis.get(random.nextInt(listNameArtis.size()));
-                }
-
-            }
-
-            for(int i=0;i<4;i++){
-                if(i==0){
-                    button0.setText(answer[i]);
-                } else if(i==1){
-                    button1.setText(answer[i]);
-                } else if(i==2){
-                    button2.setText(answer[i]);
-                } else {
-                    button3.setText(answer[i]);
-                }
-            }
+            newQuestion();
 
         } catch (Exception e) {
             e.printStackTrace();
