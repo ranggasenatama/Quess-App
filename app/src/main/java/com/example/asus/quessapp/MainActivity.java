@@ -6,6 +6,8 @@ import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ImageView;
+
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -21,28 +23,30 @@ public class MainActivity extends AppCompatActivity {
     List<String> listImage = new ArrayList<String>();
     List<String> listNameArtis = new ArrayList<String>();
     int selectedCelebrity=0;
+    ImageView imageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        imageView = (ImageView) findViewById(R.id.imageView);
         DownloadTask downloadTask = new DownloadTask();
         String result ;
 
         try {
             result = downloadTask.execute("http://www.posh24.se/kandisar").get();
 
-            String split[] = result.split("<div class=\"channelListEntry\">");
+            String split[] = result.split("<div class=\"listedArticles\">");
 
-            Pattern pattern = Pattern.compile("<a href=\"(.*?)\">");
+            Pattern pattern = Pattern.compile("img src=\"(.*?)\"");
             Matcher matcher = pattern.matcher(split[0]);
 
             while (matcher.find()) {
                 listImage.add(matcher.group(1));
             }
 
-            pattern = Pattern.compile("<alt=\"(.*?)\">");
+            pattern = Pattern.compile("alt=\"(.*?)\"");
             matcher = pattern.matcher(split[0]);
 
             while (matcher.find()) {
@@ -50,7 +54,14 @@ public class MainActivity extends AppCompatActivity {
             }
 
             Random random = new Random();
-            selectedCelebrity = random.nextInt(listNameArtis.size());
+            selectedCelebrity = random.nextInt(listNameArtis.size()+1);
+
+            DownloadImage downloadImage = new DownloadImage();
+
+            Bitmap bitmap = downloadImage.execute(listImage.get(selectedCelebrity)).get();
+
+            imageView.setImageBitmap(bitmap);
+
         } catch (Exception e) {
             e.printStackTrace();
         }
