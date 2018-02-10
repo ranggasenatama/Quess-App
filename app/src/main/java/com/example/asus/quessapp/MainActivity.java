@@ -6,6 +6,7 @@ import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Button;
 import android.widget.ImageView;
 
 import java.io.InputStream;
@@ -22,10 +23,17 @@ public class MainActivity extends AppCompatActivity {
 
     List<String> listImage = new ArrayList<String>();
     List<String> listNameArtis = new ArrayList<String>();
+
     String answer[] = new String[4];
     int locationAnswer=0;
     int selectedCelebrity=0;
+
     ImageView imageView;
+
+    Button button0;
+    Button button1;
+    Button button2;
+    Button button3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +41,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         imageView = (ImageView) findViewById(R.id.imageView);
+        button0 = (Button) findViewById(R.id.button0);
+        button1 = (Button) findViewById(R.id.button1);
+        button2 = (Button) findViewById(R.id.button2);
+        button3 = (Button) findViewById(R.id.button3);
         DownloadTask downloadTask = new DownloadTask();
         String result ;
 
@@ -77,6 +89,18 @@ public class MainActivity extends AppCompatActivity {
                     answer[i]=listNameArtis.get(random.nextInt(listNameArtis.size()));
                 }
 
+            }
+
+            for(int i=0;i<4;i++){
+                if(i==0){
+                    button0.setText(answer[i]);
+                } else if(i==1){
+                    button1.setText(answer[i]);
+                } else if(i==2){
+                    button2.setText(answer[i]);
+                } else {
+                    button3.setText(answer[i]);
+                }
             }
 
         } catch (Exception e) {
