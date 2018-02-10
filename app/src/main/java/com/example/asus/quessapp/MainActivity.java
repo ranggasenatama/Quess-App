@@ -22,6 +22,8 @@ public class MainActivity extends AppCompatActivity {
 
     List<String> listImage = new ArrayList<String>();
     List<String> listNameArtis = new ArrayList<String>();
+    String answer[] = new String[4];
+    int locationAnswer=0;
     int selectedCelebrity=0;
     ImageView imageView;
 
@@ -54,13 +56,28 @@ public class MainActivity extends AppCompatActivity {
             }
 
             Random random = new Random();
-            selectedCelebrity = random.nextInt(listNameArtis.size()+1);
+            selectedCelebrity = random.nextInt(listNameArtis.size());
 
             DownloadImage downloadImage = new DownloadImage();
 
             Bitmap bitmap = downloadImage.execute(listImage.get(selectedCelebrity)).get();
 
             imageView.setImageBitmap(bitmap);
+
+            locationAnswer = random.nextInt(4);
+
+            int j=0;
+            for(int i=0;i<4;i++){
+                if(locationAnswer==i) {
+                    answer[i]=listNameArtis.get(selectedCelebrity);
+                }else {
+                    while(j == selectedCelebrity){
+                        j=random.nextInt(listNameArtis.size());
+                    }
+                    answer[i]=listNameArtis.get(random.nextInt(listNameArtis.size()));
+                }
+
+            }
 
         } catch (Exception e) {
             e.printStackTrace();
