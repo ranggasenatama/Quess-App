@@ -61,11 +61,11 @@
       <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/asus/quessapp/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="65" column="52" lean-forward="false" selection-start-line="65" selection-start-column="52" selection-end-line="65" selection-end-column="52" />
+            <state relative-caret-position="527">
+              <caret line="52" column="68" lean-forward="false" selection-start-line="52" selection-start-column="68" selection-end-line="52" selection-end-column="68" />
               <folding>
-                <element signature="e#528#536#0" expanded="true" />
-                <element signature="e#586#594#0" expanded="true" />
+                <element signature="e#592#600#0" expanded="true" />
+                <element signature="e#650#658#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -1957,7 +1957,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1518263826129" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1518264473814" />
       </method>
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -2057,7 +2057,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1518263826129" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1518264473814" />
       </method>
     </configuration>
     <list size="1">
@@ -2164,8 +2164,8 @@
         <state relative-caret-position="391">
           <caret line="23" column="77" lean-forward="true" selection-start-line="23" selection-start-column="77" selection-end-line="23" selection-end-column="77" />
           <folding>
-            <element signature="e#528#536#0" expanded="true" />
-            <element signature="e#586#594#0" expanded="true" />
+            <element signature="e#592#600#0" expanded="true" />
+            <element signature="e#650#658#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2194,11 +2194,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/asus/quessapp/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="65" column="52" lean-forward="false" selection-start-line="65" selection-start-column="52" selection-end-line="65" selection-end-column="52" />
+        <state relative-caret-position="527">
+          <caret line="52" column="68" lean-forward="false" selection-start-line="52" selection-start-column="68" selection-end-line="52" selection-end-column="68" />
           <folding>
-            <element signature="e#528#536#0" expanded="true" />
-            <element signature="e#586#594#0" expanded="true" />
+            <element signature="e#592#600#0" expanded="true" />
+            <element signature="e#650#658#0" expanded="true" />
           </folding>
         </state>
       </provider>
